@@ -50,6 +50,37 @@ class Version
       $this->build_metadata = $build_metadata;
    }
 
+   public function getMajor() {
+      return $this->major;
+   }
+
+   public function getMinor() {
+      return $this->minor;
+   }
+
+   public function getPatch() {
+      return $this->patch;
+   }
+
+   public function getPrerelease() {
+      return $this->prerelease;
+   }
+
+   public function getBuildMetadata() {
+      return $this->build_metadata;
+   }
+
+   public function toString() {
+      $result = "$this->major.$this->minor.$this->patch";
+      if (strlen($this->prerelease) > 0) {
+         $result = $result . "-" . $this->prerelease;
+      }
+      if (strlen($this->build_metadata) > 0) {
+         $result = $result . "+" . $this->build_metadata;
+      }
+      return $result;
+   }
+
    /**
     * Parses a string as if it was a semantic version.
     *
